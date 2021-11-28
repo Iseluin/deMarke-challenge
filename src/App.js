@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import CountryObjectCreator from "./CountryObjectCreator";
+import GroupingGenerator from "./GroupingGenerator";
 import "./App.css";
 
 const API_ENDPOINT = "https://travelbriefing.org/countries.json";
@@ -38,7 +38,7 @@ function App() {
           return <li key={index}>{item.name}</li>;
         })}
       </ul>
-      <CountryObjectCreator data={data} />
+      <GroupingGenerator data={data} />
     </div>
   );
 }

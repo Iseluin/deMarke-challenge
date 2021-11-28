@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 
-export default function CountryObjectCreator({ data }) {
+export default function GroupingGenerator({ data }) {
   const countryArray = [];
   let pairs = [];
-    
-  const[result, setResult] = useState(["Results will be shown here"])
+
+  const [result, setResult] = useState(["Results will be shown here"]);
 
   useEffect(() => {
     getData();
@@ -37,9 +37,7 @@ export default function CountryObjectCreator({ data }) {
     }
 
     document.getElementById("generateButton").setAttribute("disabled", true);
-    console.log(pairs, "pairs");
-    pairs.map((pair) => console.log(pair));
-    pairs.length !== 0 ? setResult(pairs) : setResult("No matches.")
+    pairs.length !== 0 ? setResult(pairs) : setResult("No mutual neighboring countries found");
   }
   return (
     <div>
@@ -48,9 +46,9 @@ export default function CountryObjectCreator({ data }) {
       </button>
 
       <div>
-
-          {typeof result !== "string" ? result.map((pair)=> <p>{pair}</p>) : result}
-
+        {typeof result !== "string"
+          ? result.map((pair, index) => <p key={index}>{pair}</p>)
+          : result}
       </div>
     </div>
   );
